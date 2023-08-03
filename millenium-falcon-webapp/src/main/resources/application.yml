@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:universe.db
+    driver-class-name: org.sqlite.JDBC
+    type: com.zaxxer.hikari.HikariDataSource
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    deserialization:
+      accept-empty-array-as-null-object: on
+      accept-empty-string-as-null-object: on
+

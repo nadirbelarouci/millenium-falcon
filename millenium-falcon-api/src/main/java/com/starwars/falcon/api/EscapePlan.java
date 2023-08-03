@@ -1,3 +1,3 @@
-package com.starwars.api;
+package com.starwars.falcon.api;
 
 public record EscapePlan(double successProbability) {}

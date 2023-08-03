@@ -1,0 +1,8 @@
+---
+version: '3.9'
+services:
+  sqlite:
+    image: keinos/sqlite3:latest
+    command: sqlite3 /workspace/sample.db
+    volumes:
+      - ./universe.db:/workspace/sample.db

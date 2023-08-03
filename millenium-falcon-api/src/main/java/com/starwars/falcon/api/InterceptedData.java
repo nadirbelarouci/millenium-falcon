@@ -1,4 +1,4 @@
-package com.starwars.api;
+package com.starwars.falcon.api;
 
 import com.google.common.collect.ImmutableSet;
 

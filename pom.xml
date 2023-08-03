@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.2</version>
+    </parent>
 
     <groupId>com.starwars</groupId>
     <artifactId>millenium-falcon</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>millenium-falcon-api</module>
         <module>millenium-falcon-logic</module>
-        <module>millenium-falcon-web</module>
         <module>millenium-falcon-webapp</module>
     </modules>
 
@@ -23,6 +27,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>32.1.1-jre</version>
+            </dependency>
             <dependency>
                 <groupId>com.starwars</groupId>
                 <artifactId>millenium-falcon-api</artifactId>
@@ -38,11 +47,38 @@
                 <artifactId>millenium-falcon-web</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>32.1.1-jre</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.ekryd.sortpom</groupId>
+                <artifactId>sortpom-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <createBackupFile>false</createBackupFile>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <expandEmptyElements>false</expandEmptyElements>
+                    <nrOfIndentSpace>4</nrOfIndentSpace>
+                    <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
+                    <sortDependencies>scope,groupId,artifactId</sortDependencies>
+                    <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
+                    <sortModules>true</sortModules>
+                    <sortPlugins>groupId,artifactId</sortPlugins>
+                    <sortProperties>true</sortProperties>
+                    <verifyFail>warn</verifyFail>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify-pom-sorting</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
