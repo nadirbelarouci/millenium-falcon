@@ -5,10 +5,12 @@ import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.impl.DefaultConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-@Import({MilleniumFalconServiceImpl.class, RouteRepository.class})
+@Import({MilleniumFalconTravelPlannerImpl.class, RouteRepository.class})
+@EnableConfigurationProperties(TravelPlanProperties.class)
 public class MilleniumFalconServiceConfig {
   @Bean
   public DSLContext dsl(DataSource dataSource) {
