@@ -1,6 +1,8 @@
 package com.starwars.falcon.logic;
 
-import java.util.List;
+import static com.google.common.collect.ImmutableSet.toImmutableSet;
+
+import com.google.common.collect.ImmutableSet;
 import org.jooq.DSLContext;
 
 class RouteRepository {
@@ -10,7 +12,7 @@ class RouteRepository {
     this.context = context;
   }
 
-  List<Route> findAll() {
-    return context.selectFrom("routes").fetchInto(Route.class).stream().toList();
+  ImmutableSet<Route> findAll() {
+    return context.selectFrom("routes").fetchInto(Route.class).stream().collect(toImmutableSet());
   }
 }
