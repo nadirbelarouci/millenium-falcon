@@ -1,0 +1,6 @@
+{
+  "autonomy": 10,
+  "departure": "Tatooine",
+  "arrival": "Crait",
+  "routes_db": "../db/universe.db"
+}

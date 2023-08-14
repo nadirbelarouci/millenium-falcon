@@ -1,0 +1,9 @@
+spring:
+  main:
+    web-application-type: none
+    log-startup-info: false
+    banner-mode: off
+logging:
+  level:
+    root: off
+    com.starwars: info

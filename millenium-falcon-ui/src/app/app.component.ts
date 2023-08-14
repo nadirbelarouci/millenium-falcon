@@ -99,7 +99,7 @@ export class AppComponent implements OnInit {
 
       // If risk increases, create risk description
       if (nextStep.risk > step.risk) {
-        const riskPercent = (nextStep.risk * 100).toFixed(0);
+        const riskPercent = (nextStep.risk).toFixed(0);
         riskDescription = ` with ${riskPercent}% chance of being captured on day ${nextStep.day} on ${nextStep.node}`;
       }
 

@@ -35,7 +35,7 @@ class RouteServiceImplTest {
     assertThat(routeService.findTravelPlan(new EmpireIntelRequest(5, ImmutableSet.of())))
         .isEqualTo(
             new TravelPlanResponse(
-                1,
+                100,
                 ImmutableSet.of(
                     new StepResponse("A", 0, 6, 0),
                     new StepResponse("B", 1, 5, 0),
