@@ -15,8 +15,8 @@
 
     <modules>
         <module>millenium-falcon-api</module>
+        <module>millenium-falcon-app</module>
         <module>millenium-falcon-logic</module>
-        <module>millenium-falcon-webapp</module>
     </modules>
 
     <properties>
@@ -40,11 +40,6 @@
             <dependency>
                 <groupId>com.starwars</groupId>
                 <artifactId>millenium-falcon-logic</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.starwars</groupId>
-                <artifactId>millenium-falcon-web</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>

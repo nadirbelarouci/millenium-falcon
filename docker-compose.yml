@@ -1,8 +1,21 @@
 ---
 version: '3.9'
 services:
-  sqlite:
-    image: keinos/sqlite3:latest
-    command: sqlite3 /workspace/sample.db
+  millenium-falcon-app:
+    build: millenium-falcon-app/target
+    ports:
+      - '8080:8080'
+      - '18181:18181'
+    environment:
+      JAVA_OPTIONS: >-
+        -Dspring.profiles.active=local-dev
+        -agentlib:jdwp=transport=dt_socket,address=*:18181,server=y,suspend=n
     volumes:
-      - ./universe.db:/workspace/sample.db
+      - ${SQLDB_PATH:-./db}:/home/starwars/db
+  millenium-falcon-ui:
+    build: millenium-falcon-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      millenium-falcon-app:
+        condition: service_started
