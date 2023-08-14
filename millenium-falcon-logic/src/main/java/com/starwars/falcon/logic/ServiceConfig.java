@@ -9,9 +9,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-@Import({MilleniumFalconTravelPlannerImpl.class, RouteRepository.class})
+@Import({RouteServiceImpl.class, RouteRepository.class})
 @EnableConfigurationProperties(TravelPlanProperties.class)
-public class MilleniumFalconServiceConfig {
+public class ServiceConfig {
   @Bean
   public DSLContext dsl(DataSource dataSource) {
     return DSL.using(new DefaultConfiguration().set(dataSource).derive(SQLDialect.SQLITE));

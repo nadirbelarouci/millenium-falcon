@@ -8,7 +8,8 @@ import org.springframework.validation.annotation.Validated;
 
 @Validated
 @ConfigurationProperties
-record TravelPlanProperties(@Positive int autonomy, @NotBlank String departure, @NotBlank String arrival) {
+record TravelPlanProperties(
+    @Positive int autonomy, @NotBlank String departure, @NotBlank String arrival) {
   @ConstructorBinding
   TravelPlanProperties {}
 }

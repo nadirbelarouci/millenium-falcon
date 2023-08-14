@@ -9,6 +9,6 @@ spring:
       accept-empty-array-as-null-object: on
       accept-empty-string-as-null-object: on
 
-autonomy: 6
+autonomy: 10
 departure: "Tatooine"
-arrival: "Endor"
+arrival: "Crait"

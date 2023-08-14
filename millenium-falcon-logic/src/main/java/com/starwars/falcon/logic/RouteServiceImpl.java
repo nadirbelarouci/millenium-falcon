@@ -4,17 +4,17 @@ import static com.google.common.collect.ImmutableSet.toImmutableSet;
 
 import com.google.common.collect.ImmutableSet;
 import com.starwars.falcon.api.EmpireIntelRequest;
-import com.starwars.falcon.api.MilleniumFalconTravelPlanner;
-import com.starwars.falcon.api.Step;
+import com.starwars.falcon.api.RouteResponse;
+import com.starwars.falcon.api.RouteService;
+import com.starwars.falcon.api.StepResponse;
 import com.starwars.falcon.api.TravelPlanResponse;
 import com.starwars.falcon.logic.TravelPlanFinder.ComputedTravelPlan;
-import com.starwars.falcon.api.RouteResponse;
 
-class MilleniumFalconTravelPlannerImpl implements MilleniumFalconTravelPlanner {
+class RouteServiceImpl implements RouteService {
   private final RouteRepository routeRepository;
   private final TravelPlanProperties travelPlanProperties;
 
-  MilleniumFalconTravelPlannerImpl(RouteRepository routeRepository, TravelPlanProperties travelPlanProperties) {
+  RouteServiceImpl(RouteRepository routeRepository, TravelPlanProperties travelPlanProperties) {
     this.routeRepository = routeRepository;
     this.travelPlanProperties = travelPlanProperties;
   }
@@ -30,12 +30,11 @@ class MilleniumFalconTravelPlannerImpl implements MilleniumFalconTravelPlanner {
     return toTravelPlanResponse(computedTravelPlan);
   }
 
-  private static TravelPlanResponse toTravelPlanResponse(
-      ComputedTravelPlan computedTravelPlan) {
+  private static TravelPlanResponse toTravelPlanResponse(ComputedTravelPlan computedTravelPlan) {
     return new TravelPlanResponse(
         1 - computedTravelPlan.risk(),
         computedTravelPlan.path().stream()
-            .map(step -> new Step(step.node(), step.day(), step.fuel(), step.risk()))
+            .map(step -> new StepResponse(step.node(), step.day(), step.fuel(), step.risk()))
             .collect(toImmutableSet()));
   }
 

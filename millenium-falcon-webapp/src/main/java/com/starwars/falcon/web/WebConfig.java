@@ -5,10 +5,10 @@ import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-@Import(MilleniumFalconController.class)
+@Import(RouteController.class)
 public class WebConfig {
-    @Bean
-    public Module guavaModule() {
-        return new GuavaModule();
-    }
+  @Bean
+  public Module guavaModule() {
+    return new GuavaModule();
+  }
 }

@@ -5,18 +5,19 @@ import static com.google.common.collect.ImmutableTable.toImmutableTable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
-import com.google.common.collect.Table;
-import com.starwars.falcon.api.BountyHunterLocation;
+import com.google.common.collect.ImmutableTable;
+import com.starwars.falcon.api.BountyHunterLocationRequest;
 import com.starwars.falcon.api.EmpireIntelRequest;
 import java.util.stream.Stream;
 
 final class TravelPlanFinderConfig {
-  private final Table<String, String, Integer> graph;
+  private final ImmutableTable<String, String, Integer> graph;
   private final ImmutableSetMultimap<Integer, String> riskNodeByDay;
   private final int maxTime;
   private final int initialAutonomy;
 
-  TravelPlanFinderConfig(ImmutableSet<Route> routes, EmpireIntelRequest empireIntelRequest, int autonomy) {
+  TravelPlanFinderConfig(
+      ImmutableSet<Route> routes, EmpireIntelRequest empireIntelRequest, int autonomy) {
     graph =
         routes.stream()
             .flatMap(route -> Stream.of(route, route.reverse()))
@@ -24,24 +25,25 @@ final class TravelPlanFinderConfig {
     riskNodeByDay =
         empireIntelRequest.bountyHunters().stream()
             .collect(
-                toImmutableSetMultimap(BountyHunterLocation::day, BountyHunterLocation::planet));
+                toImmutableSetMultimap(
+                    BountyHunterLocationRequest::day, BountyHunterLocationRequest::planet));
     maxTime = empireIntelRequest.countdown();
     initialAutonomy = autonomy;
   }
 
-  public Table<String, String, Integer> getGraph() {
+  ImmutableTable<String, String, Integer> getGraph() {
     return graph;
   }
 
-  public ImmutableSetMultimap<Integer, String> getRiskNodeByDay() {
+  ImmutableSetMultimap<Integer, String> getRiskNodeByDay() {
     return riskNodeByDay;
   }
 
-  public int getMaxTime() {
+  int getMaxTime() {
     return maxTime;
   }
 
-  public int getInitialAutonomy() {
+  int getInitialAutonomy() {
     return initialAutonomy;
   }
 }
