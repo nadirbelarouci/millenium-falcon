@@ -20,5 +20,4 @@ MODIFIED_JSON=$(jq --arg key "routes_db" --arg value "$SQLDB_PATH" '.[$key]=$val
 
 echo $MODIFIED_JSON
 
-
 java -Dspring.profiles.active=cli -Dspring.application.json="$MODIFIED_JSON" -jar cli/millenium-falcon-app-1.0-SNAPSHOT.jar "$EMPIRE"

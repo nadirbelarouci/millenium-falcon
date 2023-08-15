@@ -5,7 +5,6 @@ import com.starwars.falcon.api.EmpireIntelRequest;
 import com.starwars.falcon.api.RouteResponse;
 import com.starwars.falcon.api.RouteService;
 import com.starwars.falcon.api.TravelPlanResponse;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

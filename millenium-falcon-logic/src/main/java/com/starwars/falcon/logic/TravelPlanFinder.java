@@ -1,8 +1,5 @@
 package com.starwars.falcon.logic;
 
-import com.google.common.collect.ImmutableSet;
-import com.starwars.falcon.api.BountyHunterLocationRequest;
-import com.starwars.falcon.api.EmpireIntelRequest;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,36 +7,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 class TravelPlanFinder {
-
-  public static void main(String[] args) {
-    TravelPlanFinderConfig config =
-        new TravelPlanFinderConfig(
-            ImmutableSet.of(
-                new Route("1", "2", 1),
-                new Route("2", "5", 1),
-                new Route("1", "3", 1),
-                new Route("3", "5", 1)),
-            new EmpireIntelRequest(
-                10,
-                ImmutableSet.of(
-                    new BountyHunterLocationRequest("2", 1),
-                    new BountyHunterLocationRequest("2", 2),
-                    new BountyHunterLocationRequest("2", 3),
-                    new BountyHunterLocationRequest("2", 4),
-                    new BountyHunterLocationRequest("2", 5),
-                    new BountyHunterLocationRequest("2", 6),
-                    new BountyHunterLocationRequest("3", 1),
-                    new BountyHunterLocationRequest("3", 2),
-                    new BountyHunterLocationRequest("3", 3),
-                    new BountyHunterLocationRequest("3", 4),
-                    new BountyHunterLocationRequest("3", 5),
-                    new BountyHunterLocationRequest("3", 6),
-                    new BountyHunterLocationRequest("3", 7))),
-            5);
-    TravelPlanFinder travelPlanFinder = new TravelPlanFinder(config);
-    System.out.println(travelPlanFinder.findTravelPlan("1", "5"));
-  }
-
   private static final Comparator<NodeState> BY_RISK_THEN_DAY =
       Comparator.comparingDouble(NodeState::risk).thenComparing(NodeState::day);
   private final TravelPlanFinderConfig config;

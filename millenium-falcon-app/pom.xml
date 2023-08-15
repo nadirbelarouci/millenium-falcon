@@ -48,15 +48,6 @@
         </dependency>
     </dependencies>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${spring.boot.main-class}</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
         <resources>
             <resource>
                 <filtering>true</filtering>
@@ -72,6 +63,15 @@
                 <directory>${basedir}/src/main/docker</directory>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${spring.boot.main-class}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <profiles>
         <profile>

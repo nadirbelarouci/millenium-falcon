@@ -22,11 +22,11 @@ dirOfRoutesDb=$(jq -r '.routes_db' "$jsonFile" | xargs dirname)
 # Export the directory path as SQLDB_PATH
 export SQLDB_PATH="$PWD/$jsonFileDir/$dirOfRoutesDb"
 
-jsonWithoutRoutesDb=$(jq 'del(.routes_db)' "$jsonFile")
+jsonWithoutRoutesDb=$(jq -c 'del(.routes_db)' "$jsonFile")
 
-# Set the STARWARS_JAVA_OPTIONS with the content of the JSON file
-export STARWARS_JAVA_OPTIONS="-Dspring.application.json=$jsonWithoutRoutesDb"
+export FALCON_CONFIG="$jsonWithoutRoutesDb"
 
+echo "Falcon config: $FALCON_CONFIG"
 echo "Mounting $SQLDB_PATH to /home/starwars/db"
 
 docker-compose up -d --build

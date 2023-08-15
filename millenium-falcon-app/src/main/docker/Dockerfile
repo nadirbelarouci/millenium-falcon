@@ -12,4 +12,4 @@ ENV PATH $JAVA_HOME/bin:$PATH
 
 
 ADD "@project.build.finalName@.jar" "@project.build.finalName@.jar"
-CMD exec java ${JAVA_OPTIONS} ${STARWARS_JAVA_OPTIONS} -jar "@project.build.finalName@.jar"
+CMD exec java ${JAVA_OPTIONS} -jar "@project.build.finalName@.jar"
